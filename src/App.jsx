@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Github, GraduationCap, Briefcase, Code, Award, ExternalLink, Download} from 'lucide-react';
+import { Mail, Phone, Github, GraduationCap, Briefcase, Code, Award, ExternalLink, Download, Volume2} from 'lucide-react';
 import profileImg from './assets/profile.png';
 import resumePdf from './assets/Alyssa_Sanchez_Resume.pdf';
+import nameAudio from './assets/Alyssa-Pronunciation.m4a';
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState('about');
@@ -15,26 +16,26 @@ export default function Portfolio() {
             <img 
               src={profileImg}
               alt="Alyssa B. Sanchez" 
-              className="w-32 h-32 rounded-full border-4 border-purple-500 shadow-lg shadow-purple-500/50 object-cover"
+              className="w-38 h-38 rounded-full border-4 border-purple-500 shadow-lg shadow-purple-500/50 object-cover"
             />
             <div className="flex-1">
-              <h1 className="text-5xl font-bold mb-1.5 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-bold mb-0 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 ALYSSA B. SANCHEZ
               </h1>
-              <p className="text-xl text-purple-300 mb-4">Software Engineer & Tech Enthusiast</p>
+              <p className="text-xl text-purple-300 mb-2">Computer Engineer & Tech Enthusiast</p>
               
               <div className="flex flex-wrap gap-6 text-m">
                 <a href="mailto:ysabsanchez@gmail.com" className="flex items-center gap-2 text-purple-300 hover:text-purple-200 transition">
-                  <Mail size={18} />
+                  <Mail size={18} className="shrink-0 relative top-[2px]" />
                   <span>ysabsanchez@gmail.com</span>
                 </a>
                 <a href="tel:+639692595885" className="flex items-center gap-2 text-purple-300 hover:text-purple-200 transition">
-                  <Phone size={18} />
-                  <span>+63 969 259 5885</span>
+                  <Phone size={18} className="shrink-0 relative top-[2px]" />
+                  <span>+63-952-452-2506</span>
                 </a>
-                <a href="https://github.com/ysawwwww" className="flex items-center gap-2 text-purple-300 hover:text-purple-200 transition">
-                  <Github size={18} />
-                  <span>ysawwwww</span>
+                <a href="https://github.com/ysabsanchez" className="flex items-center gap-2 text-purple-300 hover:text-purple-200 transition">
+                  <Github size={18} className="shrink-0 relative top-[2px]" />
+                  <span>ysabsanchez</span>
                 </a>
               </div>
             </div>
@@ -44,33 +45,34 @@ export default function Portfolio() {
 
       {/* Main Content */}
       <main className="w-full px-6 py-8 flex flex-col items-center">
-        <div className="w-full max-w-4xl mx-auto bg-gray-900/50 backdrop-blur-sm border border-purple-800/30 rounded-lg p-8 pt-6 pb-6">
-          <nav className="flex flex-wrap justify-center gap-2 mb-4 border-purple-800/30 pb-2">
+        <div className="w-full max-w-4xl mx-auto bg-gray-900/50 backdrop-blur-sm border border-purple-800/30 rounded-lg p-8 pt-3 pb-6">
+          <nav className="flex flex-wrap justify-center gap-2 mb-2 border-purple-800/30 pb-0">
             <TabButton active={activeTab === 'about'} onClick={() => setActiveTab('about')}>
-              <Code size={16} />
+              <Code size={20} />
               About
             </TabButton>
             <TabButton active={activeTab === 'education'} onClick={() => setActiveTab('education')}>
-              <GraduationCap size={16} />
+              <GraduationCap size={20} />
               Education
             </TabButton>
             <TabButton active={activeTab === 'experience'} onClick={() => setActiveTab('experience')}>
-              <Briefcase size={16} />
+              <Briefcase size={20} />
               Experience
             </TabButton>
             <TabButton active={activeTab === 'projects'} onClick={() => setActiveTab('projects')}>
-              <Code size={16} />
+              <Code size={20} />
               Projects
             </TabButton>
             <TabButton active={activeTab === 'skills'} onClick={() => setActiveTab('skills')}>
-              <Code size={16} />
+              <Code size={20} />
               Skills
             </TabButton>
             <TabButton active={activeTab === 'achievements'} onClick={() => setActiveTab('achievements')}>
-              <Award size={16} />
+              <Award size={20} />
               Achievements
             </TabButton>
           </nav>
+          <hr className="mt-0 border-purple-800/50 mb-6 -mx-8" />
           {activeTab === 'about' && <AboutSection />}
           {activeTab === 'education' && <EducationSection />}
           {activeTab === 'experience' && <ExperienceSection />}
@@ -79,10 +81,10 @@ export default function Portfolio() {
           {activeTab === 'achievements' && <AchievementsSection />}
           
           {/* Footer */}
-          <hr className="mt-8 border-purple-800/50 mb-5" />
+          <hr className="mt-8 border-purple-800/50 mb-5 -mx-8" />
           <footer className="text-center text-sm text-purple-400/80">
             <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
-              <p>Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+              <p>Last updated: January 18, 2026</p>
               
               <span className="hidden md:inline text-purple-900/50">|</span>
             
@@ -129,20 +131,43 @@ function TabButton({ active, onClick, children }) {
 
 // About Section
 function AboutSection() {
+
+  const playAudio = () => {
+  const audio = new Audio(nameAudio);
+  audio.play();
+  };
+
   return (
     <div>
       <h2 className="text-3xl font-bold mb-3 text-purple-300 border-l-4 border-purple-500 pl-4">About</h2>
       <hr className="mt-2 border-purple-800/50 mb-5" />
       <div className="space-y-4 text-gray-300">
         <p className="text-lg">
-          Hello! I'm <span className="text-purple-400 font-semibold">Alyssa B. Sanchez</span> 👋
+          <span className="text-pink-400 font-semibold">Hello!</span> I'm <span className="text-purple-300 font-bold">Alyssa </span>
+          <button 
+              onClick={playAudio}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                marginLeft: '4px',
+                marginRight: '4px',
+                cursor: 'pointer'
+              }}
+              className="appearance-none align-middle relative bottom-[2px] text-gray-400 hover:text-purple-500"
+            >
+              <Volume2 size={22} />
+          </button> 
+          <span className="text-gray-400 italic">/əˈlɪsə/</span> aka <span className="text-purple-300 font-bold">YSA!</span>👋
         </p>
         <p>
-          A passionate <span className="text-purple-300">Computer Engineering Graduate</span> and
-          <span className="text-pink-300"> aspiring software engineer</span> with hands-on experience in
+          A passionate <span className="text-purple-300 font-semibold">Computer Engineering Graduate </span>
+          {/* and<span className="text-pink-300 font-semibold"> aspiring cloud engineer </span> */}
+          with hands-on experience in
           <span className="text-purple-400 font-semibold"> full-stack development, mobile apps, AI </span> and <span className="text-purple-400 font-semibold">IoT</span>.
         </p>
-        <p>I'm naturally <span className="text-yellow-400 font-semibold">creative</span> and I love <span className="text-green-400 font-semibold">solving</span> problems.</p>
+        <p>I'm naturally <span className="text-yellow-400 font-bold">creative</span> and I love <span className="text-green-400 font-bold">solving</span> problems.</p>
+        <p>In my free time, I enjoy <span className="text-purple-300">watching, reading</span> and <span className="text-purple-300">playing games</span>. Currently, I'm obsessed with <span className="italic text-purple-400 font-semibold">SDV</span> and can't wait for <span className="italic text-purple-400 font-semibold">The Witcher IV!</span> Also, I'm a <span className="text-pink-300 font-semibold">Shih Tzu's favorite human.</span> 🐶</p>
       </div>
     </div>
   );
@@ -200,7 +225,7 @@ function ExperienceSection() {
           period="2025"
           description={[
             "Built a native Android app (Kotlin/ XML) serving as the central hub for system automation, real-time monitoring, and manual hardware control.",
-            "Integrated YOLOv8 AI model for camera-based flower classification and connected the app to an ESP32 microcontroller via Bluetooth SPP, enabling automated environmental adjustments to extend flower vase life.",
+            "Integrated a pretrained YOLOv8 AI model for camera-based flower classification and connected the app to an ESP32 microcontroller via Bluetooth SPP, enabling automated environmental adjustments to extend flower vase life.",
             "Designed an intuitive UI/UX for real-time sensor data monitoring, hardware control, and notification alerts."
           ]}
         />
@@ -253,14 +278,14 @@ function ProjectsSection() {
           tech="Kotlin, XML, YOLOv8, ESP32"
           period="2025"
           description="AI-powered Android app that classifies flowers using YOLOv8 and communicates with an ESP32 to automatically adjust environmental conditions, extending flower vase life."
-          link="https://github.com/ysawwwww/AsteraCareApp"
+          link="https://github.com/ysabsanchez/AsteraCareApp"
         />
         <ProjectCard
-          title="Obelisk Order Inventory System "
+          title="Obelisk Order Inventory System"
           tech="PHP Laravel, MySQL, HTML/CSS, JavaScript, Bootstrap"
           period="2024"
           description="Warehouse inventory management system with role-based access control to streamline inventory tracking."
-          link="https://github.com/ysawwwww"
+          link="https://github.com/ysabsanchez"
         />
       </div>
     </div>
@@ -306,9 +331,9 @@ function ProjectCard({ title, tech, period, description, link }) {
 
 // Skills Section
 function SkillsSection() {
-  const languages = ['Python', 'HTML/CSS', 'JavaScript', 'SQL (MySQL)', 'Kotlin' , 'PHP', 'C/C++', 'Java'];
-  const frameworks = ['Laravel', 'React', 'Tailwind CSS', 'Bootstrap'];
-  const tools = ['Git', 'GitHub', 'Figma', 'Canva', 'TinkerCAD', 'Proteus 8', 'MATLAB'];
+  const languages = ['Python', 'HTML/CSS', 'JavaScript', 'SQL (MySQL)', 'Kotlin', 'Java' , 'PHP', 'C/C++', 'C#', 'MATLAB'];
+  const frameworks = ['Laravel', 'React.js', 'Tailwind CSS', 'Bootstrap'];
+  const tools = ['Git', 'GitHub', 'Figma', 'Canva', 'TinkerCAD', 'Proteus 8', 'MATLAB', 'FluidSim', 'SolidWorks'];
 
   return (
     <div>
@@ -359,7 +384,7 @@ function AchievementsSection() {
         />
         <AchievementCard
           title="ICPEP NCR 2023 and 2024 QuizBowl Champion"
-          description=""
+          description="Represented Colegio de Muntinlupa and won the NCR QuizBowl championship in both 2023 and 2024, serving as a two-time national-level representative."
         />
       </div>
     </div>
